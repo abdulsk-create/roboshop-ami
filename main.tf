@@ -1,3 +1,11 @@
+terraform {
+  backend "s3" {
+    bucket = "tf-state-db70"
+    key    = "ami/terraform.tfstate"
+    region = "us-east-1"
+  }
+}
+
 data "aws_ami" "ami" {
   most_recent      = true
   name_regex       = "Centos-8-DevOps-Practice"
@@ -30,3 +38,4 @@ resource "null_resource" "commands" {
     ]
   }
 }
+
